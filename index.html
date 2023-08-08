@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <script src="script.js" defer></script>
+    <div class="header">
+      <h1>Tic Tac Toe</h1>
+    </div>
+    <div class="sidebar">
+      <h2>Some options here</h2>
+
+      <div class="options">
+        <button>New Game</button>
+        <button>Choose Mark</button>
+        <button>Reset Scores</button>
+
+        <form action="" method="post">
+          <fieldset>
+            <legend>Player 1 Choose your mark</legend>
+            <div class="radio-btn">
+              <input type="radio" name="choice" id="marker-choice" value="X" />
+              <label for="choice">X</label>
+            </div>
+            <div class="radio-btn">
+              <input type="radio" name="choice" id="marker-choice" value="O" />
+              <label for="choice">O</label>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <div class="main">
+      <div class="stats">
+        <div class="player-1">
+          <h3>Player 1</h3>
+
+          <h3>Score</h3>
+          <div class="score"></div>
+          <h3>Mark</h3>
+        </div>
+      </div>
+      <div class="game-board">
+        <div class="box position-1">1</div>
+        <div class="box position-2">2</div>
+        <div class="box position-3">3</div>
+        <div class="box position-4">4</div>
+        <div class="box position-5">5</div>
+        <div class="box position-6">6</div>
+        <div class="box position-7">7</div>
+        <div class="box position-8">8</div>
+        <div class="box position-9">9</div>
+      </div>
+      <div class="stats">
+        <div class="player-2">
+          <h3>Player 2</h3>
+          <h3>Score</h3>
+          <div class="score"></div>
+          <h3>Mark</h3>
+        </div>
+      </div>
+      <!-- <div class="game-stats">
+        <div class="player-1">
+          <h3>Player 1</h3>
+        </div>
+        <div class="player-2">
+          <h3>player 2</h3>
+        </div>
+      </div> -->
+    </div>
+    <div class="footer">Footer here</div>
+  </body>
+</html>
