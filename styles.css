@@ -34,13 +34,21 @@ h3 {
   border: 1px solid red;
 }
 
+.hidden {
+  display: none;
+}
+
 .header {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: aqua;
   grid-area: 1 / 2 / 2 / 4;
   max-width: 1500px;
+}
+
+.results {
 }
 
 .sidebar {

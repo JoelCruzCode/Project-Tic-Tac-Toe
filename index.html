@@ -10,15 +10,33 @@
     <script src="script.js" defer></script>
     <header class="header">
       <h1>Tic Tac Toe</h1>
+      <h3 class="results hidden">Results</h3>
     </header>
     <section class="sidebar">
       <h2>Some options here</h2>
 
       <div class="options">
-        <button>New Game</button>
+        <button class="new-btn">New Game</button>
         <button>Choose Mark</button>
-        <button>Reset Scores</button>
-
+        <button class="reset-btn">Reset Scores</button>
+        <button>Change Names</button>
+        <form action="" method="post">
+          <label for="user-one">Player 1</label>
+          <input
+            type="text"
+            name="user-one"
+            id="user-one"
+            placeholder="Player 1"
+          />
+          <label for="user-two"> Player 2</label>
+          <input
+            type="text"
+            name="user-two"
+            id="user-two"
+            placeholder="Player 2"
+          />
+          <button type="submit">Submit</button>
+        </form>
         <form action="" method="post">
           <fieldset>
             <legend>Player 1 Choose your mark</legend>
@@ -38,28 +56,27 @@
       <div class="stats">
         <div class="player-1">
           <h3>Player 1</h3>
-
           <h3>Score</h3>
-          <div class="score"></div>
+          <div class="score">0</div>
           <h3>Mark</h3>
         </div>
       </div>
       <div class="game-board">
-        <div class="box position-1">1</div>
-        <div class="box position-2">2</div>
-        <div class="box position-3">3</div>
-        <div class="box position-4">4</div>
-        <div class="box position-5">5</div>
-        <div class="box position-6">6</div>
-        <div class="box position-7">7</div>
-        <div class="box position-8">8</div>
-        <div class="box position-9">9</div>
+        <div class="box position-1" data-index="0">1</div>
+        <div class="box position-2" data-index="1">2</div>
+        <div class="box position-3" data-index="2">3</div>
+        <div class="box position-4" data-index="3">4</div>
+        <div class="box position-5" data-index="4">5</div>
+        <div class="box position-6" data-index="5">6</div>
+        <div class="box position-7" data-index="6"></div>
+        <div class="box position-8" data-index="7"></div>
+        <div class="box position-9" data-index="8"></div>
       </div>
       <div class="stats">
         <div class="player-2">
           <h3>Player 2</h3>
           <h3>Score</h3>
-          <div class="score"></div>
+          <div class="score">0</div>
           <h3>Mark</h3>
         </div>
       </div>
