@@ -126,13 +126,16 @@ const gameController = (() => {
 })();
 
 const displayController = (() => {
-  let gameBoardElement = document.querySelector(".game-board");
-  let newBtn = document.querySelector(".new-btn");
-  let resetBtn = document.querySelector(".reset-btn");
-  let scores = document.querySelectorAll(".score");
-  let [...boxes] = document.querySelectorAll(".box");
-  let results = document.querySelector(".results");
-
+  const gameBoardElement = document.querySelector(".game-board");
+  const scores = document.querySelectorAll(".score");
+  const [...boxes] = document.querySelectorAll(".box");
+  const results = document.querySelector(".results");
+  const newBtn = document.querySelector(".new-btn");
+  const resetBtn = document.querySelector(".reset-btn");
+  const submitBtn = document.querySelector(".submit-btn");
+  const namesBtn = document.querySelector(".names-btn");
+  const nameForm = document.querySelector("#names-form");
+  const markForm = document.querySelector("#mark-form");
   const displayResults = (message) => {
     results.textContent = message;
     results.classList.remove("hidden");
@@ -160,7 +163,7 @@ const displayController = (() => {
     newBtn.addEventListener("click", function () {
       gameController.resetGame();
       displayBoard();
-      results.classList.toggle("hidden");
+      results.classList.add("hidden");
     });
   })();
 
@@ -170,6 +173,35 @@ const displayController = (() => {
       displayScore();
     });
   })();
+
+  const changeNames = () => {
+    const user1 = document.querySelector("#user-one");
+    const user2 = document.querySelector("#user-two");
+    const name1 = document.querySelector("#player-1-name");
+    const name2 = document.querySelector("#player-2-name");
+    const users = [user1, user2];
+    const names = [name1, name2];
+
+    users.forEach((user, index) => {
+      if (user.value) {
+        names[index].textContent = user.value;
+      }
+    });
+    nameForm.classList.add("hidden");
+  };
+
+  submitBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    changeNames();
+  });
+
+  namesBtn.addEventListener("click", function () {
+    nameForm.classList.remove("hidden");
+  });
+
+  markForm.addEventListener("click", function () {
+    markForm.classList.toggle("hidden");
+  });
 
   return { displayBoard, resetBoard, displayScore, displayResults };
 })();
