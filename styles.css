@@ -22,6 +22,7 @@ h3 {
 
 .options > * {
   max-width: 150px;
+  min-width: 150px;
 }
 
 /* utility class */
