@@ -139,10 +139,12 @@ const displayController = (() => {
   const fieldBtn = document.querySelector(".field-btn");
   const nameForm = document.querySelector("#names-form");
   const markForm = document.querySelector("#mark-form");
+
   const displayResults = (message) => {
     results.textContent = message;
     results.classList.remove("hidden");
   };
+
   const displayScore = () => {
     scores.forEach(
       (score, index) =>
@@ -201,16 +203,23 @@ const displayController = (() => {
   const changeMarks = () => {
     let marks = document.querySelectorAll("#marker-choice");
     let players = gameController.players;
+    const mark1 = document.querySelector("#mark-1");
+    const mark2 = document.querySelector("#mark-2");
 
     if (gameBoard.getBoard().every((cell) => cell === "")) {
       marks.forEach((mark) => {
         if (mark.checked) {
           players[0].setMark(mark.value);
+          mark1.textContent = mark.value;
         }
         players[0].getMark() === "X"
           ? players[1].setMark("O")
           : players[1].setMark("X");
+        mark2.textContent = players[1].getMark();
       });
+    } else {
+      displayResults("You can't change your mark during a live round");
+      setTimeout(displayResults, 2000);
     }
     toggleDisplay(markForm, fieldBtn);
   };
