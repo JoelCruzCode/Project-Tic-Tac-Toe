@@ -4,18 +4,7 @@
 
 ### 1. Add CSS styling
 
-- add dynamic footer
-
-- Add Warning if player tries to change mark during a live round
-
-- Pick colors for page
-
-- style buttons
-
-- - change border radius
-- - change state effects(hover, clicked)
-
-- change header font size
+- finished current objectives
 
 ### 2. Make page more responsive
 
