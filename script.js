@@ -48,7 +48,7 @@ const gameController = (() => {
   let gameOver = false;
   let player1 = player("john", "X");
   let player2 = player("jacob", "O");
-  let players = [player1, player2];
+  const players = [player1, player2];
   let activePlayer = player1;
   let results;
   let winner;
@@ -126,6 +126,7 @@ const gameController = (() => {
 })();
 
 const displayController = (() => {
+  // User Interface Elements
   const gameBoardElement = document.querySelector(".game-board");
   const scores = document.querySelectorAll(".score");
   const [...boxes] = document.querySelectorAll(".box");
@@ -134,6 +135,8 @@ const displayController = (() => {
   const resetBtn = document.querySelector(".reset-btn");
   const submitBtn = document.querySelector(".submit-btn");
   const namesBtn = document.querySelector(".names-btn");
+  const markBtn = document.querySelector(".mark-btn");
+  const fieldBtn = document.querySelector(".field-btn");
   const nameForm = document.querySelector("#names-form");
   const markForm = document.querySelector("#mark-form");
   const displayResults = (message) => {
@@ -149,6 +152,10 @@ const displayController = (() => {
 
   const displayBoard = (board) => {
     boxes.forEach((box, index) => (box.textContent = gameBoard.board[index]));
+  };
+
+  const toggleDisplay = (...elements) => {
+    elements.forEach((element) => element.classList.toggle("hidden"));
   };
 
   const placeMarker = (() =>
@@ -185,22 +192,46 @@ const displayController = (() => {
     users.forEach((user, index) => {
       if (user.value) {
         names[index].textContent = user.value;
+        gameController.players[index].setName(user.value);
       }
     });
-    nameForm.classList.add("hidden");
+    toggleDisplay(nameForm);
   };
 
+  const changeMarks = () => {
+    let marks = document.querySelectorAll("#marker-choice");
+    let players = gameController.players;
+
+    if (gameBoard.getBoard().every((cell) => cell === "")) {
+      marks.forEach((mark) => {
+        if (mark.checked) {
+          players[0].setMark(mark.value);
+        }
+        players[0].getMark() === "X"
+          ? players[1].setMark("O")
+          : players[1].setMark("X");
+      });
+    }
+    toggleDisplay(markForm, fieldBtn);
+  };
+
+  // Form Event Listeners
   submitBtn.addEventListener("click", function (e) {
     e.preventDefault();
     changeNames();
   });
 
   namesBtn.addEventListener("click", function () {
-    nameForm.classList.remove("hidden");
+    nameForm.classList.toggle("hidden");
   });
 
-  markForm.addEventListener("click", function () {
-    markForm.classList.toggle("hidden");
+  fieldBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    changeMarks();
+  });
+
+  markBtn.addEventListener("click", function () {
+    toggleDisplay(markForm, fieldBtn);
   });
 
   return { displayBoard, resetBoard, displayScore, displayResults };
